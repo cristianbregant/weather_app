@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:alpian_weather_flutter/src/helper/api_response.dart';
 import 'package:alpian_weather_flutter/src/helper/app_exception.dart';
 import 'package:alpian_weather_flutter/src/model/weather_forecast.dart';
+import 'package:alpian_weather_flutter/src/model/weather_history.dart';
 import 'package:alpian_weather_flutter/src/repository/open_weather_repository.dart';
 import 'package:alpian_weather_flutter/src/utils/utils.dart';
 
@@ -32,8 +33,10 @@ class WeatherForecastBloc {
       var response = await _repository.getCityForecast(city ?? "London", _tU);
 
       Utils.lastUpdate = DateTime.now().millisecondsSinceEpoch;
-      var _map = {"date": Utils.lastUpdate, "forecast": response};
-      Utils.hiveHelper.forecasts.add(_map);
+      WeatherHistory _history =
+          WeatherHistory(forecast: response, date: Utils.lastUpdate!);
+
+      Utils.hiveHelper.forecasts.add(_history);
 
       weatherForecastSink.add(ApiResponse.completed(response));
     } on SocketException {

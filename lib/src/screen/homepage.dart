@@ -82,8 +82,8 @@ class _HomepageState extends State<Homepage> {
                             "Please check your internet connection or try again later")));
                     if (Utils.hiveHelper.forecasts.isNotEmpty) {
                       var _wf = Utils.hiveHelper.forecasts.values.last;
-                      Utils.lastUpdate = _wf["date"];
-                      WeatherForecast _lastWeatherForecast = _wf["forecast"];
+                      Utils.lastUpdate = _wf.date;
+                      WeatherForecast _lastWeatherForecast = _wf.forecast;
                       return _body(_lastWeatherForecast);
                     } else {
                       return Center(

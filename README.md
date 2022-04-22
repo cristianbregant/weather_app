@@ -56,7 +56,7 @@ You can tell the temperature by counting a cricket’s chirps
    
 
 
-#### Made with love by Cristian Bregant during the easter holidays.
+#### Made by Cristian Bregant during the easter holidays.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
